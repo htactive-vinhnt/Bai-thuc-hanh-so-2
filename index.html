@@ -9,68 +9,10 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <style>
-    body {
-      background-image: url("https://i.pinimg.com/originals/5e/a5/a2/5ea5a25d2c9f72cbc32f6c1c15c1a664.jpg");
-      max-width: auto;
-      overflow: hidden;
-    }
-    .header {
-    }
-    .icon {
-      width: 50px;
-      height: 50px;
-    }
-    .content {
-      max-width: auto;
-      height: auto;
-      padding-left: 8%;
-    }
-    .col {
-      background-color: rgba(245, 244, 244, 0.966);
-      width: 300px;
-      height: auto;
-      float: left;
-      margin: 20px;
-      border-radius: 10px;
-    }
-    h3 {
-      text-align: center;
-    }
-    .icon-add {
-      color: gray;
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-      margin:0px;
-      border: none;
-      
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      padding: 12px 16px;
-      z-index: 1;
-    }
-    .task{
-        width: 90%; margin: 2%; height:30px; background-color: white; border: 1px solid rgb(224, 224, 224); border-radius: 5px; 
-        padding: 5px 20px;
-    }
-    .task:hover {
-        background-color:  rgba(245, 244, 244, 0.966);
-    }
-  </style>
   <body>
-    <div class="container-fluid" onfocus="closeFormAdd()">
+    <div class="container-fluid">
       <div class="header" id="">
         <div class="left-menu">
           <i class="fa fa-pen"></i>
@@ -90,18 +32,46 @@
       <div class="content" id="">
         <div class="col">
           <h3>To do</h3>
-          <div id="showTask">
-          </div>
+          <div class="dropdown-Action">
+              <button onclick="showActionPage()" style="border: none" class="icon-add">...</button>
+              <div class="dropdown-content-Action" id="moreAction">
+                <p class="title-Action">List Actions</p>
+                <button onclick="closeActionPage()" class="dropdown-button-Action">
+                  <i class="fa fa-close">X</i>
+                </button>
+                <div class="Action">Member</div>
+                <div class="Action">Label</div>
+                <div class="Action">Position</div>
+              </div>
+            </div>
+          <div class="showTasks" tasks-data></div>
           <div class="dropdown">
-            <button onclick="showFormAdd()" class="icon-add"><span class="fas fa-plus"></span></button>
+            <button onclick="showFormAdd()" class="icon-add dropdown-button">
+              <span class="fas fa-plus"></span>
+            </button>
             <div class="dropdown-content" id="newTask">
               <input
                 type="text"
                 id="titleTask"
+                create-new-task
                 placeholder="Enter a title for this card ..."
               />
-              <button onclick="addTask()">Add</button>
-              <button onclick="closeFormAdd()"><span class="fa fa-close"></span></button>
+              <button type="submit" onclick="addTask()">Add</button>
+              <button onclick="closeFormAdd()" class="dropdown-button">
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="dropdown-option">
+                <button onclick="showMore()" class="icon-add">...</button>
+                <div class="dropdown-content-option" id="more">
+                  <p class="title-option">Options</p>
+                  <button onclick="closeMore()" class="dropdown-button-option">
+                    <i class="fa fa-close">X</i>
+                  </button>
+                  <div class="option">Member</div>
+                  <div class="option">Label</div>
+                  <div class="option">Position</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
