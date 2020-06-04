@@ -12,6 +12,8 @@ body {
   max-width: auto;
   height: auto;
   padding-left: 8%;
+  position: relative;
+  
 }
 .col {
   background-color: rgba(245, 244, 244, 0.966);
@@ -20,18 +22,21 @@ body {
   float: left;
   margin: 20px;
   border-radius: 10px;
+  position: relative;
 }
 
 .showTasks {
   display: block;
   overflow: auto;
-  width: 300px;
+  min-width: 290px;
   max-height: 600px;
+  position: relative; 
 }
+
 h3 {
   text-align: center;
   float: left;
-  margin-left: 120px;
+  margin-left: 35%;
   padding-right: 70px;
 }
 
@@ -138,12 +143,18 @@ h3 {
     margin: 20px;
 }
 .task {
-  width: 90%;
+  width: 95%;
   margin: 2%;
-  height: 50px;
+  min-height: 50px;
+  height: auto;
   background-color: white;
   border: 1px solid rgb(224, 224, 224);
   border-radius: 5px;
+  word-wrap:break-word;
+  list-style: none;
+  /* padding-left: 5px; */
+  /* position: relative; */
+  /* margin-right: 5px; */
   padding: 5px 20px;
 }
 .task:hover {
@@ -152,16 +163,54 @@ h3 {
 
 .updateIcon {
   width: 20px;
-  margin-left: 210px;
+  margin-left: 200px;
   text-align: right;
   color: rgb(150, 146, 146);
   display: none;
-  align-content: right;
-  align-items: right;
-  justify-items: right;
+  /* position: absolute; */
 }
 
 .updateIcon:hover {
-  /* width: 25px; */
+  width: 25px;
   color: rgb(182, 177, 177);
 }
+/*=========================================dailog=====================================*/
+dialog {
+  text-align: center;
+  display: none;
+  width: 50%;
+  height: auto;
+  min-height: 400px;
+  background-color: rgb(206, 203, 203);
+  position: absolute;
+  border: none;
+}
+
+.header-Dailog {
+  width: 100%;
+  height: 10%;
+  float: left;
+}
+
+.title-Dailog {
+  text-align: left;
+  font-size: 30px;
+  color: gray;
+  float: left;
+  width: 90%;
+}
+ .icon-title {
+  color: gray;
+  width: 30px;
+  height: 30px;
+  float: left;
+ }
+
+ .close-dailog {
+  color: gray;
+  width: 30px;
+  height: 30px;
+  float: left;
+  font-size: 30px;
+ }
+ 

@@ -33,18 +33,28 @@
         <div class="col">
           <h3>To do</h3>
           <div class="dropdown-Action">
-              <button onclick="showActionPage()" style="border: none" class="icon-add">...</button>
-              <div class="dropdown-content-Action" id="moreAction">
-                <p class="title-Action">List Actions</p>
-                <button onclick="closeActionPage()" class="dropdown-button-Action">
-                  <i class="fa fa-close">X</i>
-                </button>
-                <div class="Action">Member</div>
-                <div class="Action">Label</div>
-                <div class="Action">Position</div>
-              </div>
+            <button
+              onclick="showActionPage()"
+              style="border: none"
+              class="icon-add"
+            >
+              ...
+            </button>
+            <div class="dropdown-content-Action" id="moreAction">
+              <p class="title-Action">List Actions</p>
+              <button
+                onclick="closeActionPage()"
+                class="dropdown-button-Action"
+              >
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="Action">Member</div>
+              <div class="Action">Label</div>
+              <div class="Action">Position</div>
             </div>
-          <div class="showTasks" tasks-data></div>
+          </div>
+          <div class="showTasks" tasks-data>
+          </div>
           <div class="dropdown">
             <button onclick="showFormAdd()" class="icon-add dropdown-button">
               <span class="fas fa-plus"></span>
@@ -77,15 +87,176 @@
         </div>
         <div class="col">
           <h3>Doing</h3>
+          <div class="dropdown-Action">
+            <button
+              onclick="doing_ShowActionPage()"
+              style="border: none"
+              class="icon-add"
+            >...</button>
+            <div class="dropdown-content-Action" id="doing_MoreAction">
+              <p class="title-Action">List Actions</p>
+              <button
+                onclick="doing_CloseActionPage()"
+                class="dropdown-button-Action"
+              >
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="Action">Member</div>
+              <div class="Action">Label</div>
+              <div class="Action">Position</div>
+            </div>
+          </div>
+          <div class="showTasks" col-doing-tasks-data></div>
+          <div class="dropdown">
+            <button onclick="doing_ShowFormAdd()" class="icon-add dropdown-button">
+              <span class="fas fa-plus"></span>
+            </button>
+            <div class="dropdown-content" id="doing_NewTask">
+              <input
+                type="text"
+                id="titleTask"
+                col-doing-create-new-task
+                placeholder="Enter a title for this card ..."
+              />
+              <button type="submit" onclick="colDoingAddTask()">Add</button>
+              <button onclick="doing_CloseFormAdd()" class="dropdown-button">
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="dropdown-option">
+                <button onclick="doing_ShowMore()" class="icon-add">...</button>
+                <div class="dropdown-content-option" id="doing_More">
+                  <p class="title-option">Options</p>
+                  <button onclick="doing_CloseMore()" class="dropdown-button-option">
+                    <i class="fa fa-close">X</i>
+                  </button>
+                  <div class="option">Member</div>
+                  <div class="option">Label</div>
+                  <div class="option">Position</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col">
           <h3>Verify</h3>
+          <div class="dropdown-Action">
+            <button
+              onclick="verify_ShowActionPage()"
+              style="border: none"
+              class="icon-add"
+            >...</button>
+            <div class="dropdown-content-Action" id="verify_MoreAction">
+              <p class="title-Action">List Actions</p>
+              <button
+                onclick="verify_CloseActionPage()"
+                class="dropdown-button-Action"
+              >
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="Action">Member</div>
+              <div class="Action">Label</div>
+              <div class="Action">Position</div>
+            </div>
+          </div>
+          <div class="showTasks" col-verify-tasks-data></div>
+          <div class="dropdown">
+            <button onclick="verify_ShowFormAdd()" class="icon-add dropdown-button">
+              <span class="fas fa-plus"></span>
+            </button>
+            <div class="dropdown-content" id="verify_NewTask">
+              <input
+                type="text"
+                id="titleTask"
+                col-verify-create-new-task
+                placeholder="Enter a title for this card ..."
+              />
+              <button type="submit" onclick="colVerifyAddTask()">Add</button>
+              <button onclick="verify_CloseFormAdd()" class="dropdown-button">
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="dropdown-option">
+                <button onclick="verify_ShowMore()" class="icon-add">...</button>
+                <div class="dropdown-content-option" id="verify_More">
+                  <p class="title-option">Options</p>
+                  <button onclick="verify_CloseMore()" class="dropdown-button-option">
+                    <i class="fa fa-close">X</i>
+                  </button>
+                  <div class="option">Member</div>
+                  <div class="option">Label</div>
+                  <div class="option">Position</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col">
           <h3>
             Done
           </h3>
+          <div class="dropdown-Action">
+            <button
+              onclick="done_ShowActionPage()"
+              style="border: none"
+              class="icon-add">...</button>
+            <div class="dropdown-content-Action" id="done_MoreAction">
+              <p class="title-Action">List Actions</p>
+              <button
+                onclick="done_CloseActionPage()"
+                class="dropdown-button-Action"
+              >
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="Action">Member</div>
+              <div class="Action">Label</div>
+              <div class="Action">Position</div>
+            </div>
+          </div>
+          <div class="showTasks" col-done-tasks-data></div>
+          <div class="dropdown">
+            <button onclick="done_ShowFormAdd()" class="icon-add dropdown-button">
+              <span class="fas fa-plus"></span>
+            </button>
+            <div class="dropdown-content" id="done_NewTask">
+              <input
+                type="text"
+                id="titleTask"
+                col-done-create-new-task
+                placeholder="Enter a title for this card ..."
+              />
+              <button type="submit" onclick="colDoneAddTask()">Add</button>
+              <button onclick="done_CloseFormAdd()" class="dropdown-button">
+                <i class="fa fa-close">X</i>
+              </button>
+              <div class="dropdown-option">
+                <button onclick="doing_ShowMore()" class="icon-add">...</button>
+                <div class="dropdown-content-option" id="done_More">
+                  <p class="title-option">Options</p>
+                  <button onclick="done_CloseMore()" class="dropdown-button-option">
+                    <i class="fa fa-close">X</i>
+                  </button>
+                  <div class="option">Member</div>
+                  <div class="option">Label</div>
+                  <div class="option">Position</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <dialog id="detail">
+            <div class="header-Dailog">
+              <i class="fas fa-list icon-title"></i>
+              <p id="titleDailog" class="title-Dailog"></p>
+              <p class="close-dailog" onclick="closeDailog()">X</p>
+            </div>
+            <div id="idDailog" class="id-Dailog"></div>
+            <div id="categoryDailog" class=""></div>
+            <!-- <div id="titleDailog">hoạt động</div>
+            <input id="comment"/>
+            <div id="titleDailog">tình trạng</div> -->
+            <div class="content-dailog">
+              <!-- <div class="menu-dailog"></div> -->
+            </div>
+          </dialog>
       </div>
       <div class="footer" id=""></div>
     </div>
