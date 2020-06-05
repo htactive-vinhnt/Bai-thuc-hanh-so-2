@@ -54,6 +54,25 @@
             </div>
           </div>
           <div class="showTasks" tasks-data>
+            <dialog id='edit' class='dialog-edit-form' >
+              <div class='left-content-edit-form'>
+                <input class='input-edit' id='datachange'  value='' edit-title-task/>
+                <button type='submit' onclick='editSave()' class='save-data-edit'>Save</button>
+                <button onclick='closeEditForm()'>X</button>
+              </div>
+              <div class='right-content-edit-form'>
+                  <button class='bt-edit-lable'>
+                    <i class='fa fa-edit'>
+
+                  </i> Edit-Lable</button><br><br>
+                  <button class='bt-change-member'>
+                    <i class='fa fa-user'></i>Change-Member</button><br><br>
+                    <button class='bt-move'><i class=''>-></i>Move</button><br><br>
+                    <button class='bt-Copy'><i class='fa fa-copy'></i>Copy</button><br><br>
+                    <button class='bt-Change-due-date'><i class='fa fa-calender'></i>Change-Due-Date</button><br><br>
+                    <button class='bt-delete'><i class='fa fa-remove'></i>Archive</button>
+                  </div>
+                </dialog>
           </div>
           <div class="dropdown">
             <button onclick="showFormAdd()" class="icon-add dropdown-button">
@@ -242,19 +261,16 @@
             </div>
           </div>
         </div>
-        <dialog id="detail">
+        <dialog id="detail" class="dialog-content">
             <div class="header-Dailog">
               <i class="fas fa-list icon-title"></i>
-              <p id="titleDailog" class="title-Dailog"></p>
+              <p id="titleDailog" class="title-Dailog">
+              <p id="categoryDailog" class="category-Dailog"></p></p>
               <p class="close-dailog" onclick="closeDailog()">X</p>
             </div>
-            <div id="idDailog" class="id-Dailog"></div>
-            <div id="categoryDailog" class=""></div>
-            <!-- <div id="titleDailog">hoạt động</div>
-            <input id="comment"/>
-            <div id="titleDailog">tình trạng</div> -->
             <div class="content-dailog">
-              <!-- <div class="menu-dailog"></div> -->
+              <input  class="input-edit" id="data-edit" />
+              <button class="save-data-edit" change-Task-Name>Save</button>
             </div>
           </dialog>
       </div>

@@ -152,9 +152,6 @@ h3 {
   border-radius: 5px;
   word-wrap:break-word;
   list-style: none;
-  /* padding-left: 5px; */
-  /* position: relative; */
-  /* margin-right: 5px; */
   padding: 5px 20px;
 }
 .task:hover {
@@ -167,23 +164,25 @@ h3 {
   text-align: right;
   color: rgb(150, 146, 146);
   display: none;
-  /* position: absolute; */
 }
 
 .updateIcon:hover {
   width: 25px;
   color: rgb(182, 177, 177);
 }
+
+
 /*=========================================dailog=====================================*/
-dialog {
+.dialog-content {
   text-align: center;
   display: none;
   width: 50%;
   height: auto;
   min-height: 400px;
-  background-color: rgb(206, 203, 203);
+  background-color: white;
   position: absolute;
   border: none;
+  border-radius: 10px;
 }
 
 .header-Dailog {
@@ -193,24 +192,74 @@ dialog {
 }
 
 .title-Dailog {
-  text-align: left;
   font-size: 30px;
-  color: gray;
   float: left;
-  width: 90%;
+  margin-left: 20px;
 }
  .icon-title {
-  color: gray;
   width: 30px;
   height: 30px;
   float: left;
  }
 
  .close-dailog {
-  color: gray;
   width: 30px;
   height: 30px;
   float: left;
   font-size: 30px;
  }
+
+ .category-Dailog{
+   font-size: 25px;
+   float: left;
+   width: 70%;
+   text-align: left;
+   margin-left: 10px;
+ }
  
+/*=====================dailog-edit-form==========================*/
+
+.dialog-edit-form {
+  display: none;
+  width: 100%;
+  height: auto;
+  background-color:rgba(128, 128, 128, 0.527);;
+  position: absolute;
+  border: none;
+  border-radius: 10px;
+}
+
+.left-content-edit-form {
+  width: 100%;
+  float: left;
+}
+
+.input-edit {
+  width: 80%;
+  float: bottom;
+  height:80px;;
+}
+
+.save-data-edit {
+  background-color: rgb(31, 192, 31);
+  border: 1px solid rgb(31, 192, 31);
+  border-radius: 5px;
+}
+
+.save-data-edit:hover {
+  background-color: rgb(115, 236, 115);
+}
+
+.right-content-edit-form {
+  float: left;
+}
+
+.bt-edit-lable ,.bt-change-member, .bt-move ,.bt-Copy, .bt-Change-due-date, .bt-delete {
+  margin-left: 1px;
+  transition: width 2s;
+  background-color: rgba(128, 128, 128, 0.527);
+  color: white;
+}
+.bt-edit-lable:hover, .bt-change-member:hover, .bt-move:hover, .bt-Copy:hover, .bt-Change-due-date:hover, .bt-delete:hover {
+  margin-left: 10px;
+}

@@ -4,8 +4,9 @@
 const newTaskInput = document.querySelector("[create-new-task]");
 const countTask = document.querySelector("[tasks-data]");
 // const deleteButton = document.querySelector("[delete-tasks-data]");
-const updateButton = document.querySelector("[update-tasks-data]");
+const butttonEdit = document.querySelector("[change-Task-Name]");
 const selectedToDo = document.querySelector("[select]");
+
 //========================================DOING==========================================
 const colDoingNewTaskInput = document.querySelector(
   "[col-doing-create-new-task]"
@@ -24,12 +25,12 @@ const colDoneNewTaskInput = document.querySelector(
 );
 const colDoneCountTask = document.querySelector("[col-done-tasks-data]");
 
-
 //===================================================local=======================================================================================
 
 const LOCAL_STRONG_TASKS_LISTS_KEY = "task.tasksArr";
 const LOCAL_STRONG_SELECTED_TASKS_LISTS_ID_KEY = "task.selectedList";
-let tasksArr = JSON.parse(localStorage.getItem(LOCAL_STRONG_TASKS_LISTS_KEY)) || [];
+let tasksArr =
+  JSON.parse(localStorage.getItem(LOCAL_STRONG_TASKS_LISTS_KEY)) || [];
 let selectedID = localStorage.getItem(LOCAL_STRONG_SELECTED_TASKS_LISTS_ID_KEY);
 //===============================================================================================================================================
 
@@ -38,26 +39,56 @@ clearTask = element => {
     element.removeChild(element.firstChild);
   }
 };
+showEditDailog = () => {
+  document.getElementById("edit").style.display = "block";
+};
+closeEditForm = () => {
+  document.getElementById("edit").style.display = "none";
+};
+
+findTask = idfind => {
+  tasksArr.forEach(element => {
+    if (element.id === idfind) {
+      return element.taskName;
+    }
+  });
+};
 
 colTodoRender = () => {
+  let idtasks = 1;
   clearTask(countTask);
   tasksArr.forEach(tasks => {
+    idtasks++;
     if (tasks.category == "Todo") {
       const taskElement = document.createElement("li");
       taskElement.dataset.taskID = tasks.id;
-      taskElement.classList.add("task"); 
-      if(tasks.id === selectedID) {
+      taskElement.classList.add("task");
+      if (tasks.id === selectedID) {
         document.getElementById("detail").style.display = "block";
         document.getElementById("titleDailog").innerHTML = tasks.taskName;
-        document.getElementById("idDailog").innerHTML = tasks.id;
-        document.getElementById("categoryDailog").innerHTML = tasks.category
-      } 
-      taskElement.innerHTML = tasks.taskName +"<span select class='fa fa-pen updateIcon'></span>"; // print task name and button update
+        document.getElementById("categoryDailog").innerHTML = "In lists: " + tasks.category;
+      }
+      taskElement.innerHTML = tasks.taskName + "<span onclick='showEditDailog()' class='fa fa-pen updateIcon'></span>" +"<dialog id='edit' class='dialog-edit-form' ><div class='left-content-edit-form'><input class='input-edit' id='datachange'  value='"+ tasks.taskName +"' edit-title-task/><button type='submit' onclick='editSave("+ findTask(tasks.id) +")' class='save-data-edit'>Save</button><button onclick='closeEditForm()'>X</button></div><div class='right-content-edit-form'><button class='bt-edit-lable'><i class='fa fa-edit'></i> Edit-Lable</button><br><br><button class='bt-change-member'><i class='fa fa-user'></i>Change-Member</button><br><br><button class='bt-move'><i class=''>-></i>Move</button><br><br><button class='bt-Copy'><i class='fa fa-copy'></i>Copy</button><br><br><button class='bt-Change-due-date'><i class='fa fa-calender'></i>Change-Due-Date</button><br><br><button class='bt-delete'><i class='fa fa-remove'></i>Archive</button></div></dialog>";
       countTask.appendChild(taskElement);
     }
   });
 };
 
+// butttonEdit.addEventListener("click", function(){
+//   const newTaskName = document.getElementById("data-edit").value;
+//   if (newTaskName != null || newTaskName != "") {
+//     localStorage.setItem(selectedID, newTaskName);
+//     localStorage.setItem(LOCAL_STRONG_TASKS_LISTS_KEY, JSON.stringify(tasksArr));
+//   }
+// })
+
+editSave = taskOld => {
+  var cat = localStorage.getItem(taskOld);
+
+  localStorage.setItem(cat, dataEdit);
+  closeEditForm();
+  render();
+};
 
 colDoingRender = () => {
   clearTask(colDoingCountTask);
@@ -90,7 +121,7 @@ colVerifyRender = () => {
         tasks.id +
         "</p>" +
         "<span class='fa fa-pen updateIcon'></span>"; // print task name and button update
-        colVerifyCountTask.appendChild(taskElement);
+      colVerifyCountTask.appendChild(taskElement);
     }
   });
 };
@@ -108,7 +139,7 @@ colDoneRender = () => {
         tasks.id +
         "</p>" +
         "<span class='fa fa-pen updateIcon'></span>"; // print task name and button update
-        colDoneCountTask.appendChild(taskElement);
+      colDoneCountTask.appendChild(taskElement);
     }
   });
 };
@@ -138,21 +169,20 @@ saveLocal = () => {
   localStorage.setItem(LOCAL_STRONG_SELECTED_TASKS_LISTS_ID_KEY, selectedID);
 };
 
-render = ()  => {
+render = () => {
   colDoingSaveLocalAndRender();
   saveLocalAndRender();
   colDoneSaveLocalAndRender();
   colVerifySaveLocalAndRender();
-}
-render ();
+};
+render();
 countTask.addEventListener("click", e => {
-  if(e.target.tagName.toLowerCase() === "li") {
-    selectedID = e.target.dataset.taskID
-    saveLocalAndRender()
+  if (e.target.tagName.toLowerCase() === "li") {
+    selectedID = e.target.dataset.taskID;
+    saveLocalAndRender();
   }
-})
+});
 // render all item in col Todo ==================================
-
 
 addTask = () => {
   const listTasks = newTaskInput.value;
@@ -168,19 +198,9 @@ createTask = taskName => {
     category: "Todo",
     id: Date.now().toString(),
     taskName: taskName,
-    tasks: [],
-    
+    tasks: []
   }; // create a new task
 };
-
-// updateTask = (Id, nameChange) => {
-//   tasksArr.forEach(tasks => {
-//     if( tasks.id == Id ){
-//       tasks.taskName = nameChange;
-//     }
-//   });
-//   render();
-// }
 
 // dropdown Open of col Todo
 showFormAdd = () => {
@@ -208,10 +228,7 @@ closeActionPage = () => {
   document.getElementById("moreAction").style.display = "none";
 };
 
-
-
 // render all item in col doing======================================================================================
-
 
 colDoingAddTask = () => {
   const listTasks = colDoingNewTaskInput.value;
@@ -256,7 +273,6 @@ doing_CloseMore = () => {
 doing_CloseActionPage = () => {
   document.getElementById("doing_MoreAction").style.display = "none";
 };
-
 
 // render all item in col verify======================================================================================
 
@@ -350,7 +366,6 @@ done_CloseActionPage = () => {
   document.getElementById("done_MoreAction").style.display = "none";
 };
 
-
 //=======================all col===================================================
 saveLocal = () => {
   localStorage.setItem(LOCAL_STRONG_TASKS_LISTS_KEY, JSON.stringify(tasksArr));
@@ -360,8 +375,6 @@ taskDetail = () => {
   alert("Edit page");
 };
 
-
 closeDailog = () => {
   document.getElementById("detail").style.display = "none";
-}
-
+};
